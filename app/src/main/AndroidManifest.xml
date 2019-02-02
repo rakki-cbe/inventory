@@ -10,7 +10,9 @@
             android:supportsRtl="true"
             android:fullBackupContent="false"
             android:theme="@style/AppTheme">
-        <activity android:name=".authendication.RegistrationActivity">
+        <activity
+                android:name=".authendication.RegistrationActivity"
+                android:theme="@style/AppTheme.noTittleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
