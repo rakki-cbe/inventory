@@ -17,4 +17,7 @@ interface UserDao {
 
     @Query("DELETE FROM UserInfo")
     fun deleteAll()
+
+    @Query("SELECT * FROM UserInfo WHERE userName=:mUserName")
+    fun getUser(mUserName: String): Entities.UserDetails?
 }

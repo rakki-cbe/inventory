@@ -1,6 +1,8 @@
 package rakki.inventory.basic.authendication
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -8,9 +10,13 @@ import kotlinx.android.synthetic.main.registration_activity.*
 import rakki.inventory.basic.R
 import rakki.inventory.basic.showToast
 
+/****
+ * Reference for encryption and decryption
+ * https://medium.com/@josiassena/using-the-android-keystore-system-to-store-sensitive-information-3a56175a454b
+ */
 class RegistrationActivity : AppCompatActivity(), RegistrationView {
     override fun errorUserNameAlreadyPresent() {
-
+        showToast(getString(R.string.InvalidRole))
     }
 
     override fun getFullName(): String {
@@ -43,7 +49,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
     }
 
     override fun savedSuccess() {
-
+        startActivity(LoginActivity.getLaunchIntent(this))
     }
 
     override fun errorFullName() {
@@ -81,6 +87,12 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
         reg_bt_save.setOnClickListener { viewModel.validateRegisterData() }
         reg_bt_clear.setOnClickListener { clearAll() }
 
+    }
+
+    companion object {
+        fun getLaunchIntent(context: Context): Intent {
+            return Intent(context, RegistrationActivity::class.java)
+        }
     }
 
 }

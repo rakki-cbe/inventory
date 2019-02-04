@@ -7,11 +7,15 @@ sealed class Entities {
 
     @Entity(tableName = "UserInfo")
     data class UserDetails(
-        @PrimaryKey(autoGenerate = true) var id: Int = 0,
         var userName: String? = null,
         var userPassword: String? = null,
         var userRole: Int = 0,
-        var userFullName: String? = null
-    )
+        var userFullName: String? = null,
+        var ivInfo: String? = null
+    ) {
+        @PrimaryKey(autoGenerate = true)
+        var id: Int? = null
+    }
+
 
 }

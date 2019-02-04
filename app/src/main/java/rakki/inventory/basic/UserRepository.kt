@@ -10,4 +10,9 @@ class UserRepository(private val userDao: UserDao) {
     fun insertUser(user: Entities.UserDetails) {
         userDao.insert(user)
     }
+
+    @WorkerThread
+    fun getUserBasedOnUserName(userName: String): Entities.UserDetails? {
+        return userDao.getUser(userName)
+    }
 }
