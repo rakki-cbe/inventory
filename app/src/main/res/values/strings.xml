@@ -27,4 +27,8 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="UserAlreadyPresent">User already present</string>
+    <string name="pleaseLogin">Please Login</string>
+    <string name="InvalidCredential">Invalid credential</string>
+    <string name="Login">Login</string>
 </resources>

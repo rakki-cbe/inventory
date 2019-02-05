@@ -5,10 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_login.*
 import rakki.inventory.basic.R
+import rakki.inventory.basic.showToast
 
 /**
  * A login screen that offers login via email/password.
@@ -16,11 +18,14 @@ import rakki.inventory.basic.R
 class LoginActivity : AppCompatActivity(), LoginView {
     lateinit var viewModel: LoginViewModel
     override fun invalidCredential() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showToast(getString(R.string.InvalidCredential))
     }
 
     override fun clearAll() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        log_ed_user_name.setText("")
+        log_ed_user_name.error = null
+        log_ed_pass.setText("")
+        log_ed_pass.error = null
     }
 
     override fun loggedSuccess() {
@@ -28,11 +33,11 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun errorUserName() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        log_ed_user_name.error = getString(R.string.InvalidUserName)
     }
 
     override fun errorPasswor() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        log_ed_pass.error = getString(R.string.InvalidPassword)
     }
 
     override fun getUserName(): String {
@@ -44,7 +49,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun showProgressBar(show: Boolean) {
-
+        login_progress.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

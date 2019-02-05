@@ -16,7 +16,7 @@ import rakki.inventory.basic.showToast
  */
 class RegistrationActivity : AppCompatActivity(), RegistrationView {
     override fun errorUserNameAlreadyPresent() {
-        showToast(getString(R.string.InvalidRole))
+        showToast(getString(R.string.UserAlreadyPresent))
     }
 
     override fun getFullName(): String {
@@ -49,6 +49,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
     }
 
     override fun savedSuccess() {
+        showToast(getString(R.string.pleaseLogin))
         startActivity(LoginActivity.getLaunchIntent(this))
     }
 
