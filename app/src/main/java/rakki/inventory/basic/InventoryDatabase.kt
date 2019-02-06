@@ -7,7 +7,7 @@ import android.content.Context
 import rakki.inventory.basic.authendication.UserDao
 
 
-@Database(entities = [Entities.UserDetails::class], version = 1)
+@Database(entities = [Entities.UserDetails::class], version = 2)
 abstract class InventoryDatabase : RoomDatabase() {
     abstract fun getUserDao(): UserDao
 
