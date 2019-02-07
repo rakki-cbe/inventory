@@ -1,7 +1,7 @@
 package rakki.inventory.basic.authendication
 
 import android.app.Application
-import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.android.Main
@@ -13,43 +13,46 @@ import rakki.inventory.basic.encryptPass
 
 
 class RegistrationViewModel(application: Application) : BaseViewModel(application) {
-    var view: RegistrationView? = null
-    val allUsers: LiveData<List<Entities.UserDetails>> = repository.users
+    val viewCommunicator: MutableLiveData<HashMap<ViewKey, String>> by lazy { MutableLiveData<HashMap<ViewKey, String>>() }
 
-    fun validateRegisterData() {
-
-        if (view != null)
-            if (view!!.getFullName().isEmpty()) {
-                view!!.errorFullName()
-            } else if (view!!.getUserName().isEmpty()) {
-                view!!.errorUserName()
-            } else if (view!!.getPasswor().isEmpty()) {
-                view!!.errorPasswor()
-            } else if (view!!.getRole().isEmpty()) {
-                view!!.errorRole()
+    fun validateRegisterData(fullName: String, userName: String, password: String, role: String) {
+        val hashMap = HashMap<ViewKey, String>()
+        if (fullName.isEmpty()) {
+            hashMap.put(ViewKey.FullNameInvalid, "")
+        } else if (userName.isEmpty()) {
+            hashMap.put(ViewKey.UserNameInvalid, "")
+        } else if (password.isEmpty()) {
+            hashMap.put(ViewKey.PasswordInvalid, "")
+        } else if (role.isEmpty()) {
+            hashMap.put(ViewKey.RoleInvalid, "")
             } else {
-                view!!.showProgressBar(true)
+            hashMap.put(ViewKey.ShowProgress, "")
                 scope.launch(Dispatchers.Main) {
-                    val user = checkUserAlreadyPresent(view!!.getUserName())
+                    hashMap.clear()
+                    val user = checkUserAlreadyPresent(userName)
                     if (user != null) {
-                        view!!.showProgressBar(false)
-                        view!!.errorUserNameAlreadyPresent()
+                        hashMap.put(ViewKey.HideProgress, "")
+                        hashMap.put(ViewKey.UserAlreadyPresent, "")
+
                     } else {
-                        val encrytedData = encryptPass(view!!.getPasswor())
+                        val encrytedData = encryptPass(password)
                         val userNew = Entities.UserDetails(
-                            view!!.getUserName(), encrytedData.encryptedData,
+                            userName, encrytedData.encryptedData,
                             1,
-                            view!!.getFullName(), encrytedData.iv
+                            fullName, encrytedData.iv
                         )
                         insert(userNew)
                         // Log.d("Encrypted string ", userNew.userPassword)
                         //Log.d("Decrypted string ", decrypt(userNew.userPassword!!, userNew.ivInfo!!))
-                        view!!.savedSuccess()
-                        view!!.showProgressBar(false)
+                        hashMap.put(ViewKey.HideProgress, "")
+                        hashMap.put(ViewKey.RegisterSuccess, "")
+
                     }
+                    viewCommunicator.value = hashMap
                 }
 
             }
+        viewCommunicator.value = hashMap
 
     }
 
@@ -71,5 +74,9 @@ class RegistrationViewModel(application: Application) : BaseViewModel(applicatio
         parentJob.cancel()
     }
 
+    enum class ViewKey {
+        ShowProgress, HideProgress, UserNameInvalid, PasswordInvalid,
+        CredentialInvalid, FullNameInvalid, RoleInvalid, RegisterSuccess, UserAlreadyPresent
+    }
 
 }
