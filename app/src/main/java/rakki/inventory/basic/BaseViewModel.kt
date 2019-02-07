@@ -1,24 +1,23 @@
 package rakki.inventory.basic
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.android.Main
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModel(application: Application) : AndroidViewModel(application) {
+abstract class BaseViewModel : ViewModel() {
     var parentJob = Job()
     val coroutineContext: CoroutineContext
         get() = parentJob + Dispatchers.Main
     val scope = CoroutineScope(coroutineContext)
-
-    val repository: UserRepository
+    @Inject
+    lateinit var repository: UserRepository
 
     init {
-        val userDao = InventoryDatabase.getDatabase(application).getUserDao()
-        repository = UserRepository(userDao)
+        ApplicationCustom.appComponent.inject(this)
 
     }
 

@@ -1,6 +1,5 @@
 package rakki.inventory.basic.authendication
 
-import android.app.Application
 import android.arch.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -12,7 +11,7 @@ import rakki.inventory.basic.Entities
 import rakki.inventory.basic.decrypt
 
 
-class LoginViewModel(application: Application) : BaseViewModel(application) {
+class LoginViewModel : BaseViewModel() {
     val viewCommunicator: MutableLiveData<HashMap<ViewKey, String>> by lazy { MutableLiveData<HashMap<ViewKey, String>>() }
     fun validateLoginData(userName: String, password: String) {
         val result: HashMap<ViewKey, String> = HashMap()
