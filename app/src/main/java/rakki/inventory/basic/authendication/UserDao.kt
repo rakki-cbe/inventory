@@ -20,4 +20,7 @@ interface UserDao {
 
     @Query("SELECT * FROM UserInfo WHERE userName=:mUserName")
     fun getUser(mUserName: String): Entities.UserDetails?
+
+    @Query("SELECT * FROM UserInfo WHERE id=:userId")
+    fun getUserById(userId: Int): Entities.UserDetails?
 }

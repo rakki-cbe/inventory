@@ -27,24 +27,37 @@ class LoginViewModel : BaseViewModel() {
                     val user = checkUserAlreadyPresent(userName)
                     if (user == null) {
                         result.put(ViewKey.CredentialInvalid, "")
+                        result.put(ViewKey.HideProgress, "")
 
                     } else {
                         val passwordDb = decrypt(user.userPassword!!, user.ivInfo!!)
-                        if (passwordDb.equals(password, true))
-                            result.put(ViewKey.LoginSuccess, "")
-                        else
+                        if (passwordDb.equals(password, true)) {
+                            setUserInfoToPreference(user.id!!)
+                        } else {
                             result.put(ViewKey.CredentialInvalid, "")
+                            result.put(ViewKey.HideProgress, "")
+                        }
                     }
-                    result.put(ViewKey.HideProgress, "")
+
                     viewCommunicator.value = result
+
                 }
 
 
-            }
+        }
         viewCommunicator.value = result
 
 
+    }
 
+    private fun setUserInfoToPreference(id: Int) {
+        val result: HashMap<ViewKey, String> = HashMap()
+        scope.launch(Dispatchers.Main) {
+            repository.setUserLoggedInfo(id)
+            result.put(ViewKey.HideProgress, "")
+            result.put(ViewKey.LoginSuccess, "")
+            viewCommunicator.value = result
+        }
     }
 
 
@@ -60,6 +73,17 @@ class LoginViewModel : BaseViewModel() {
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()
+    }
+
+    fun checkUserLoggedIn() {
+        val result: HashMap<ViewKey, String> = HashMap()
+        val id = repository.getUserLoggedInfo()
+        if (id != -1) {
+            result.put(ViewKey.HideProgress, "")
+            result.put(ViewKey.LoginSuccess, "")
+            viewCommunicator.value = result
+        }
+
     }
 
     enum class ViewKey {

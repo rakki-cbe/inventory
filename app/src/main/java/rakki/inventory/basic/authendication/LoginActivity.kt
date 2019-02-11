@@ -11,6 +11,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_login.*
 import rakki.inventory.basic.R
+import rakki.inventory.basic.home.HomeActivity
 import rakki.inventory.basic.showToast
 
 /**
@@ -30,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun loggedSuccess() {
-        startActivity(RegistrationActivity.getLaunchIntent(this))
+        startActivity(HomeActivity.getLaunchIntent(this))
     }
 
     fun errorUserName() {
@@ -58,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         setObserverForViewModel()
+        viewModel.checkUserLoggedIn()
         // Set up the login form.
 
         log_ed_pass.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->

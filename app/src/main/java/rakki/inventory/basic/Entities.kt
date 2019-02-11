@@ -17,7 +17,7 @@ sealed class Entities {
         var id: Int? = null
     }
 
-    @Entity(tableName = "Category", indices = [Index("categoryName")])
+    @Entity(tableName = "category", indices = [Index("categoryName")])
     data class Category(
         var categoryName: String, var cateDescription: String,
         @TypeConverters(TimeStampConverter::class) var createdDate: Date?
@@ -77,7 +77,6 @@ sealed class Entities {
         var description: String,
         var locationHint: String, @TypeConverters(TimeStampConverter::class) var createdDate: Date?
     ) {
-        @PrimaryKey(autoGenerate = true)
         var id: Int? = null
     }
 

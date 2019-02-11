@@ -4,7 +4,8 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import rakki.inventory.basic.InventoryDatabase
-import rakki.inventory.basic.UserRepository
+import rakki.inventory.basic.authendication.UserPreference
+import rakki.inventory.basic.authendication.UserRepository
 import javax.inject.Singleton
 
 @Module
@@ -13,7 +14,8 @@ class BaseViewModelModule {
     @Provides
     fun getRepository(context: Context): UserRepository {
         val userDao = InventoryDatabase.getDatabase(context).getUserDao()
-        return UserRepository(userDao)
+        return UserRepository(userDao, UserPreference(context))
     }
+
 
 }

@@ -31,4 +31,11 @@
     <string name="pleaseLogin">Please Login</string>
     <string name="InvalidCredential">Invalid credential</string>
     <string name="Login">Login</string>
+    <string name="Category">Category</string>
+    <string name="CreateCategory">Create Category</string>
+    <string name="Add">Add</string>
+    <string name="close">Close</string>
+    <string name="EnterName">Enter Name</string>
+    <string name="CategoryCreated">Category Created</string>
+    <string name="CategoryAlreadyPresent">Category already present</string>
 </resources>
