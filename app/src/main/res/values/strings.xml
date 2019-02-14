@@ -16,6 +16,15 @@
         <item>Manager</item>
         <item>Admin</item>
     </string-array>
+    <string-array name="unit_name">
+        <item>number</item>
+        <item>gram</item>
+        <item>Kg</item>
+        <item>ton</item>
+        <item>litters</item>
+
+    </string-array>
+
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -38,4 +47,28 @@
     <string name="EnterName">Enter Name</string>
     <string name="CategoryCreated">Category Created</string>
     <string name="CategoryAlreadyPresent">Category already present</string>
+    <string name="subCategoryCreated">SubCategory Created</string>
+    <string name="SubCategoryAlreadyPresent">SubCategory already present</string>
+    <string name="CreateSubCategory">Create SubCategory</string>
+    <string name="brandCreatedSuccess">Brand created successfully</string>
+    <string name="brandAlreadyPresent">Brand alredy present</string>
+    <string name="CreateBrand">Created Brand</string>
+    <string name="SubCategory">Subcategory</string>
+    <string name="Brand">Brand</string>
+    <string name="ProductName">Product Name</string>
+    <string name="unitWeightNumber">Single item weight/number</string>
+    <string name="itemPerPack">No of item in pack</string>
+    <string name="purchaseAmount">Purchase Amount</string>
+    <string name="saleAmount">Sale amount</string>
+    <string name="product_code">Product code</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
+    <string name="productCreated">Product Created</string>
+    <string name="productAlreadyPresent">Product with same detail present in db</string>
+    <string name="invalidProductName">Invalid Product Name</string>
+    <string name="invalidSaleAmount">Invalid Sale Amount</string>
+    <string name="invalidPurchaseAmount">Invalid Purchase Amount</string>
+    <string name="invalidQuantityUnit">Invalid number of item or quantity </string>
+    <string name="invalidInvidualItemQuantity">Invalid Qauntity per item</string>
+    <string name="invalidProductCode">Invalid Product Code</string>
 </resources>

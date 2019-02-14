@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -7,38 +7,375 @@
         android:layout_height="match_parent"
         tools:context=".inventory.add.AddProductFragment">
 
-    <TextView
-            android:layout_width="150dp"
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Category"
-            android:layout_marginTop="32dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:id="@+id/add_product_tv_category"/>
+            >
 
-    <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/add_product_tv_category"
-            android:layout_marginLeft="24dp"
-            android:id="@+id/add_product_sp_category"
-            android:layout_marginStart="24dp">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="32dp"
+                android:id="@+id/add_product_ll_category"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal">
 
-    </Spinner>
-    <!-- Login progress -->
-    <ProgressBar
-            android:id="@+id/add_product_login_progress"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Category"/>
 
-</android.support.constraint.ConstraintLayout>
+            <Spinner
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_product_sp_category"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="32dp"
+                android:id="@+id/add_product_ll_brand"
+                app:layout_constraintTop_toBottomOf="@+id/add_product_ll_category"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Brand"/>
+
+            <Spinner
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_product_sp_brand"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="32dp"
+                android:visibility="gone"
+                android:id="@+id/add_product_ll_subCategory"
+                app:layout_constraintTop_toBottomOf="@+id/add_product_ll_brand"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/SubCategory"/>
+
+            <Spinner
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_product_sp_sub_category"
+
+                    />
+        </LinearLayout>
+        <!--Product info-->
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                android:id="@+id/add_product_CL_product"
+                app:layout_constraintTop_toBottomOf="@+id/add_product_ll_subCategory"
+
+                >
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/add_product_ti_name"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    >
+
+                <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/add_product_ed_name"
+                        android:maxLength="25"
+                        android:inputType="text"
+                        android:hint="@string/ProductName"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintEnd_toStartOf="@id/add_product_sp_unit"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/add_product_ti_quantity_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/add_product_ti_name"
+
+                    >
+
+                <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/add_product_ed_quantity_unit"
+                        android:hint="@string/unitWeightNumber"
+                        android:maxLength="10"
+                        android:inputType="numberDecimal"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_product_sp_unit"
+                    android:layout_marginLeft="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="10dp"
+                    android:entries="@array/unit_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_product_ti_quantity_unit"
+
+
+                    />
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/add_product_ti_quantity_item_pack"
+                    app:layout_constraintTop_toBottomOf="@+id/add_product_ti_quantity_unit"
+
+                    >
+
+                <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/add_product_ed_quantity_item_pack"
+                        android:hint="@string/itemPerPack"
+                        android:maxLength="10"
+                        android:inputType="numberDecimal"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/add_product_ti_purchase_amount"
+                    app:layout_constraintTop_toBottomOf="@+id/add_product_ti_quantity_item_pack"
+
+                    >
+
+                <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/add_product_ed_amount"
+                        android:hint="@string/purchaseAmount"
+                        android:maxLength="10"
+                        android:inputType="numberDecimal"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/add_product_ti_sale_amount"
+                    app:layout_constraintTop_toBottomOf="@+id/add_product_ti_purchase_amount"
+
+                    >
+
+                <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/add_product_ed_sale_amount"
+                        android:hint="@string/saleAmount"
+                        android:maxLength="10"
+                        android:inputType="numberDecimal"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/add_product_ti_product_code"
+                    app:layout_constraintTop_toBottomOf="@+id/add_product_ti_sale_amount"
+
+                    >
+
+                <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/add_product_ed_product_code"
+                        android:hint="@string/product_code"
+                        android:maxLength="25"
+                        android:inputType="text"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/add_product_ti_description"
+                    app:layout_constraintTop_toBottomOf="@+id/add_product_ti_product_code"
+
+                    >
+
+                <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/add_product_ed_description"
+                        android:hint="@string/description"
+                        android:maxLength="25"
+                        android:inputType="text"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/add_product_ti_location"
+                    app:layout_constraintTop_toBottomOf="@+id/add_product_ti_description"
+
+                    >
+
+                <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/add_product_ed_location"
+                        android:hint="@string/location"
+                        android:maxLength="25"
+                        android:inputType="text"/>
+            </android.support.design.widget.TextInputLayout>
+            <!--Product info ends-->
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/add_product_ll_buttons"
+                    app:layout_constraintTop_toBottomOf="@+id/add_product_ti_location">
+
+                <Button
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:text="@string/Add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button_add"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"/>
+
+                <Button
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:text="@string/close"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button_close"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"/>
+
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+
+        <ProgressBar
+                android:id="@+id/add_product_login_progress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

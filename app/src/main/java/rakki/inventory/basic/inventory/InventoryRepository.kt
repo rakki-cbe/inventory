@@ -18,13 +18,73 @@ class InventoryRepository(private val inventoryDao: InventoryDAO, val userPrefer
     }
 
     @WorkerThread
-    fun getUserBasedOnId(userId: Int): Entities.Category? {
+    fun getCategoryBasedOnId(userId: Int): Entities.Category? {
         return inventoryDao.getCategoryById(userId)
     }
 
     @WorkerThread
     fun getAllCategory(): List<Entities.Category> {
         return inventoryDao.getAllCategory()
+    }
+
+    /**Brand**/
+
+    @WorkerThread
+    fun insert(brand: Entities.Brand) {
+        inventoryDao.insert(brand)
+    }
+
+    @WorkerThread
+    fun getbrandBasedOnName(brandName: String): Entities.Brand? {
+        return inventoryDao.getBandBasedOnName(brandName)
+    }
+
+    @WorkerThread
+    fun getBrandBasedOnId(brandId: Int): Entities.Brand? {
+        return inventoryDao.getBrandById(brandId)
+    }
+
+    @WorkerThread
+    fun getAllBrand(): List<Entities.Brand> {
+        return inventoryDao.getAllBrand()
+    }
+
+
+    /**SubCategory**/
+    @WorkerThread
+    fun insert(subCategory: Entities.SubCategory) {
+        inventoryDao.insert(subCategory)
+    }
+
+    @WorkerThread
+    fun getSubCategoryBasedOnName(userName: String, cateId: Int): Entities.SubCategory? {
+        return inventoryDao.getSubCategoryBasedOnName(userName, cateId)
+    }
+
+    @WorkerThread
+    fun getSubCategoryBasedOnId(subCateId: Int): Entities.SubCategory? {
+        return inventoryDao.getSubCategoryById(subCateId)
+    }
+
+    @WorkerThread
+    fun getAllSubCategory(id: Int): List<Entities.SubCategory> {
+        return inventoryDao.getAllSubCategory(id)
+    }
+
+    @WorkerThread
+    fun checkProductAlreadyPresent(
+        categoryItem: Int, subCategoryItem: Int,
+        brandItem: Int, name: String, quantityUnit: Double, quantityPerItem: Double
+        , purchaseAmount: Double, saleAmount: Double, productCode: String
+    ): Entities.Product? {
+        return inventoryDao.checkProductAlreadyPresent(
+            categoryItem, subCategoryItem, brandItem, name,
+            quantityPerItem, purchaseAmount, saleAmount, productCode
+        )
+    }
+
+    fun addNewProduct(product: Entities.Product): Long? {
+        return inventoryDao.insert(product)
     }
 
 

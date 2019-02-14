@@ -11,7 +11,7 @@ import rakki.inventory.basic.inventory.InventoryDAO
 
 @Database(
     entities = [Entities.UserDetails::class, Entities.Category::class, Entities.SubCategory::class,
-        Entities.Brand::class, Entities.Product::class], version = 2
+        Entities.Brand::class, Entities.Product::class], version = 3
 )
 @TypeConverters(TimeStampConverter::class)
 abstract class InventoryDatabase : RoomDatabase() {

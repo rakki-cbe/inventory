@@ -27,6 +27,10 @@ class DialogViewForCreate// Set the alert dialog title
         dialog.findViewById<TextView>(R.id.pro_dialog_tv_parent).text = parent
     }
 
+    fun setParentInfoVisibility(bool: Boolean) {
+        dialog.findViewById<TextView>(R.id.pro_dialog_tv_parent).visibility = if (bool) View.VISIBLE else View.GONE
+    }
+
     fun getName(): String {
         return dialog.findViewById<TextView>(R.id.add_product_name).text.toString()
     }

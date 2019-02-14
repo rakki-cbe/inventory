@@ -60,23 +60,25 @@ sealed class Entities {
             childColumns = ["subcategoryId"], onDelete = ForeignKey.CASCADE
         ), ForeignKey(
             entity = Brand::class,
-            parentColumns = ["id"], childColumns = ["productId"], onDelete = ForeignKey.CASCADE
+            parentColumns = ["id"], childColumns = ["brandId"], onDelete = ForeignKey.CASCADE
         )],
-        primaryKeys = ["categoryId", "subcategoryId", "productId", "unitQuntity", "saleAmount", "productCode"]
+        primaryKeys = ["categoryId", "subcategoryId", "amount", "brandId", "unitQuantity", "saleAmount", "productCode"]
     )
     data class Product(
         var categoryId: Int,
         var subcategoryId: Int,
-        var productId: Int,
+        var brandId: Int,
         var productCode: String,
         var productName: String,
-        var unitQuntity: Double = 0.0,
+        var unitQuantity: Double = 0.0,
         var amount: Double = 0.0,
         var saleAmount: Double = 0.0,
         var noOfUnit: Double = 0.0,
         var description: String,
-        var locationHint: String, @TypeConverters(TimeStampConverter::class) var createdDate: Date?
+        var locationHint: String,
+        @TypeConverters(TimeStampConverter::class) var createdDate: Date?
     ) {
+
         var id: Int? = null
     }
 
