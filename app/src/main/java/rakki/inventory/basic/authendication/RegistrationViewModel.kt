@@ -37,7 +37,7 @@ class RegistrationViewModel : BaseViewModel() {
                         val encrytedData = encryptPass(password)
                         val userNew = Entities.UserDetails(
                             userName, encrytedData.encryptedData,
-                            1,
+                            role,
                             fullName, encrytedData.iv
                         )
                         insert(userNew)

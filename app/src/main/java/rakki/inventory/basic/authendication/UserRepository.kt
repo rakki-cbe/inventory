@@ -18,16 +18,16 @@ class UserRepository(private val userDao: UserDao, val userPreference: UserPrefe
     }
 
     @WorkerThread
-    fun getUserBasedOnUserId(userId: Int): Entities.UserDetails? {
+    fun getUserBasedOnUserId(userId: Long): Entities.UserDetails? {
         return userDao.getUserById(userId)
     }
 
     @WorkerThread
-    fun setUserLoggedInfo(userId: Int) {
+    fun setUserLoggedInfo(userId: Long) {
         userPreference.setUserInfoToFile(userId)
     }
 
-    fun getUserLoggedInfo(): Int {
+    fun getUserLoggedInfo(): Long {
         return userPreference.getLoggedUser()
     }
 }

@@ -50,7 +50,7 @@ class LoginViewModel : BaseViewModel() {
 
     }
 
-    private fun setUserInfoToPreference(id: Int) {
+    private fun setUserInfoToPreference(id: Long) {
         val result: HashMap<ViewKey, String> = HashMap()
         scope.launch(Dispatchers.Main) {
             repository.setUserLoggedInfo(id)
@@ -78,7 +78,7 @@ class LoginViewModel : BaseViewModel() {
     fun checkUserLoggedIn() {
         val result: HashMap<ViewKey, String> = HashMap()
         val id = repository.getUserLoggedInfo()
-        if (id != -1) {
+        if (id != -1.toLong()) {
             result.put(ViewKey.HideProgress, "")
             result.put(ViewKey.LoginSuccess, "")
             viewCommunicator.value = result

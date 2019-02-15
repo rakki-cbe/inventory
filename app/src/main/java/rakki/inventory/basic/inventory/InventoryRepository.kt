@@ -18,7 +18,7 @@ class InventoryRepository(private val inventoryDao: InventoryDAO, val userPrefer
     }
 
     @WorkerThread
-    fun getCategoryBasedOnId(userId: Int): Entities.Category? {
+    fun getCategoryBasedOnId(userId: Long): Entities.Category? {
         return inventoryDao.getCategoryById(userId)
     }
 
@@ -40,7 +40,7 @@ class InventoryRepository(private val inventoryDao: InventoryDAO, val userPrefer
     }
 
     @WorkerThread
-    fun getBrandBasedOnId(brandId: Int): Entities.Brand? {
+    fun getBrandBasedOnId(brandId: Long): Entities.Brand? {
         return inventoryDao.getBrandById(brandId)
     }
 
@@ -57,29 +57,29 @@ class InventoryRepository(private val inventoryDao: InventoryDAO, val userPrefer
     }
 
     @WorkerThread
-    fun getSubCategoryBasedOnName(userName: String, cateId: Int): Entities.SubCategory? {
+    fun getSubCategoryBasedOnName(userName: String, cateId: Long): Entities.SubCategory? {
         return inventoryDao.getSubCategoryBasedOnName(userName, cateId)
     }
 
     @WorkerThread
-    fun getSubCategoryBasedOnId(subCateId: Int): Entities.SubCategory? {
+    fun getSubCategoryBasedOnId(subCateId: Long): Entities.SubCategory? {
         return inventoryDao.getSubCategoryById(subCateId)
     }
 
     @WorkerThread
-    fun getAllSubCategory(id: Int): List<Entities.SubCategory> {
+    fun getAllSubCategory(id: Long): List<Entities.SubCategory> {
         return inventoryDao.getAllSubCategory(id)
     }
 
     @WorkerThread
     fun checkProductAlreadyPresent(
-        categoryItem: Int, subCategoryItem: Int,
-        brandItem: Int, name: String, quantityUnit: Double, quantityPerItem: Double
-        , purchaseAmount: Double, saleAmount: Double, productCode: String
+        categoryItem: Long, subCategoryItem: Long,
+        brandItem: Long, name: String, quantityPerItem: Double
+        , purchaseAmount: Double, saleAmount: Double
     ): Entities.Product? {
         return inventoryDao.checkProductAlreadyPresent(
             categoryItem, subCategoryItem, brandItem, name,
-            quantityPerItem, purchaseAmount, saleAmount, productCode
+            quantityPerItem, purchaseAmount, saleAmount
         )
     }
 

@@ -16,7 +16,7 @@ class HomeViewModel : BaseViewModel() {
     var user: Entities.UserDetails? = null
     fun checkUserPresent() {
         val id = repository.getUserLoggedInfo()
-        if (id != -1) {
+        if (id != -1.toLong()) {
 
             scope.launch(Dispatchers.Main) {
                 user = scope.async(Dispatchers.IO) {

@@ -22,5 +22,5 @@ interface UserDao {
     fun getUser(mUserName: String): Entities.UserDetails?
 
     @Query("SELECT * FROM UserInfo WHERE id=:userId")
-    fun getUserById(userId: Int): Entities.UserDetails?
+    fun getUserById(userId: Long): Entities.UserDetails?
 }

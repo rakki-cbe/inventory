@@ -22,11 +22,11 @@ interface InventoryDAO {
     fun getCategoryBasedOnName(mName: String): Entities.Category?
 
     @Query("SELECT * FROM category WHERE id=:categoryId")
-    fun getCategoryById(categoryId: Int): Entities.Category?
+    fun getCategoryById(categoryId: Long): Entities.Category?
 
     /**Sub category **/
     @Query("SELECT * from SubCategory WHERE categoryId=:id")
-    fun getAllSubCategory(id: Int): List<Entities.SubCategory>
+    fun getAllSubCategory(id: Long): List<Entities.SubCategory>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(subCategory: Entities.SubCategory)
@@ -35,10 +35,10 @@ interface InventoryDAO {
     fun deleteAllSubCategory()
 
     @Query("SELECT * FROM SubCategory WHERE subCategoryName=:mName and categoryId=:cateId")
-    fun getSubCategoryBasedOnName(mName: String, cateId: Int): Entities.SubCategory?
+    fun getSubCategoryBasedOnName(mName: String, cateId: Long): Entities.SubCategory?
 
     @Query("SELECT * FROM SubCategory WHERE id=:subCategoryId")
-    fun getSubCategoryById(subCategoryId: Int): Entities.SubCategory?
+    fun getSubCategoryById(subCategoryId: Long): Entities.SubCategory?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(brand: Entities.Brand)
@@ -47,7 +47,7 @@ interface InventoryDAO {
     fun getBandBasedOnName(brandName: String): Entities.Brand?
 
     @Query("SELECT * from Brand WHERE id=:brandId")
-    fun getBrandById(brandId: Int): Entities.Brand?
+    fun getBrandById(brandId: Long): Entities.Brand?
 
     @Query("SELECT * from Brand ")
     fun getAllBrand(): List<Entities.Brand>
@@ -55,12 +55,12 @@ interface InventoryDAO {
     @Query(
         "SELECT * from Product WHERE categoryId=:categoryItem and subcategoryId=:subCategoryItem and " +
                 "brandId=:brandItem and unitQuantity=:quantityPerItem and amount=:purchaseAmount and saleAmount=:saleAmount and " +
-                "productCode=:productCode and productName=:name limit 1"
+                "productName=:name limit 1"
     )
     fun checkProductAlreadyPresent(
-        categoryItem: Int, subCategoryItem: Int, brandItem: Int, name: String,
+        categoryItem: Long, subCategoryItem: Long, brandItem: Long, name: String,
         quantityPerItem: Double, purchaseAmount: Double,
-        saleAmount: Double, productCode: String
+        saleAmount: Double
     ): Entities.Product?
 
     @Insert(onConflict = OnConflictStrategy.ABORT)

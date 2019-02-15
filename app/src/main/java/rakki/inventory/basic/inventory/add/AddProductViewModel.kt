@@ -159,7 +159,7 @@ class AddProductViewModel : InventoryBaseViewModel() {
         scope.launch(Dispatchers.Main) {
             val category = checkCategoryAlreadyPresent(name)
             if (category == null) {
-                insert(Entities.Category(name, "", null))
+                insert(Entities.Category(name, ""))
                 getCategoryName()
                 action.clear()
                 action.add(ViewCommunicator.HideProgress)
@@ -249,6 +249,7 @@ class AddProductViewModel : InventoryBaseViewModel() {
     fun saveProductInfo(
         name: String,
         quantityUnit: String,
+        quantityUnitKey: String,
         quantityPerItem: String,
         purchaseAmount: String,
         saleAmount: String,
@@ -308,14 +309,22 @@ class AddProductViewModel : InventoryBaseViewModel() {
             scope.launch(Dispatchers.IO) {
                 var product = inventoryRepo.checkProductAlreadyPresent(
                     categoryItem.id!!, subCategoryItem.id!!, brandItem.id!!, name,
-                    quantityUnitDb, quantityPerItemDb,
-                    purchaseAmountDb, saleAmountDb, productCode
+                    quantityPerItemDb,
+                    purchaseAmountDb, saleAmountDb
                 )
                 if (product == null) {
                     product = Entities.Product(
                         categoryItem.id!!, subCategoryItem.id!!, brandItem.id!!, productCode, name,
-                        quantityPerItemDb, purchaseAmountDb, saleAmountDb, quantityUnitDb, description, location, null
+                        quantityPerItemDb,
+                        quantityUnitKey,
+                        purchaseAmountDb,
+                        saleAmountDb,
+                        quantityUnitDb,
+                        description,
+                        location
                     )
+
+                    product.id = System.currentTimeMillis()
                     val id = inventoryRepo.addNewProduct(product)
                     if (id != null && id > -1) {
                         list.add(ViewCommunicator.ProductCreatedSuccessfully)

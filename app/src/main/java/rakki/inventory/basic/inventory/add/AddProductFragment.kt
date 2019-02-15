@@ -50,7 +50,9 @@ class AddProductFragment : Fragment() {
         button_add.setOnClickListener {
             viewModel.saveProductInfo(
                 add_product_ed_name.text.toString(),
-                add_product_ed_quantity_unit.text.toString(), add_product_ed_quantity_item_pack.text.toString(),
+                add_product_ed_quantity_item_pack.text.toString(),
+                add_product_sp_unit.selectedItem.toString(),
+                add_product_ed_quantity_unit.text.toString(),
                 add_product_ed_amount.text.toString(), add_product_ed_sale_amount.text.toString(),
                 add_product_ed_product_code.text.toString(), add_product_ed_description.text.toString(),
                 add_product_ed_location.text.toString(), add_product_sp_category.selectedItemPosition,
@@ -315,6 +317,7 @@ class AddProductFragment : Fragment() {
                             errorProductAlreadyPresent()
                         AddProductViewModel.ViewCommunicator.ProductCreatedSuccessfully -> productCreatedSuccessfully()
                         AddProductViewModel.ViewCommunicator.InvalidName -> invalidName()
+                        AddProductViewModel.ViewCommunicator.ClearProductInfo -> clearProductInfo()
 
                     }
 
