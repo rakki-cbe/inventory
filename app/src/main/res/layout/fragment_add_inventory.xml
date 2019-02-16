@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".inventory.add.AddInventoryFragment">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="32dp"
+                android:id="@+id/add_product_ll_category"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Category"/>
+
+            <Spinner
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_product_sp_category"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="32dp"
+                android:id="@+id/add_product_ll_brand"
+                app:layout_constraintTop_toBottomOf="@+id/add_product_ll_category"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Brand"/>
+
+            <Spinner
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_product_sp_brand"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="32dp"
+                android:visibility="gone"
+                android:id="@+id/add_product_ll_subCategory"
+                app:layout_constraintTop_toBottomOf="@+id/add_product_ll_brand"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/SubCategory"/>
+
+            <Spinner
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_product_sp_sub_category"
+
+                    />
+        </LinearLayout>
+        <!--Product info-->
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                android:id="@+id/add_product_Fl_product"
+                app:layout_constraintTop_toBottomOf="@+id/add_product_ll_subCategory"
+
+                >
+
+        </FrameLayout>
+
+        <ProgressBar
+                android:id="@+id/add_product_login_progress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

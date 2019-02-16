@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Product info-->
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".inventory.add.AddProductInfoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:visibility="visible"
+        android:id="@+id/add_product_CL_product"
+        app:layout_constraintTop_toBottomOf="@+id/add_product_ll_subCategory"
+
+        >
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/add_product_ti_name"
+            app:layout_constraintTop_toTopOf="parent"
+
+            >
+
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_product_ed_name"
+                android:maxLength="25"
+                android:inputType="text"
+                android:hint="@string/ProductName"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toStartOf="@id/add_product_sp_unit"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/add_product_ti_quantity_unit"
+            app:layout_constraintTop_toBottomOf="@+id/add_product_ti_name"
+
+            >
+
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_product_ed_quantity_unit"
+                android:hint="@string/unitWeightNumber"
+                android:maxLength="10"
+                android:inputType="numberDecimal"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_product_sp_unit"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="10dp"
+            android:entries="@array/unit_name"
+            app:layout_constraintBottom_toBottomOf="@+id/add_product_ti_quantity_unit"
+
+
+            />
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/add_product_ti_quantity_item_pack"
+            app:layout_constraintTop_toBottomOf="@+id/add_product_ti_quantity_unit"
+
+            >
+
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_product_ed_quantity_item_pack"
+                android:hint="@string/itemPerPack"
+                android:maxLength="10"
+                android:inputType="numberDecimal"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/add_product_ti_purchase_amount"
+            app:layout_constraintTop_toBottomOf="@+id/add_product_ti_quantity_item_pack"
+
+            >
+
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_product_ed_amount"
+                android:hint="@string/purchaseAmount"
+                android:maxLength="10"
+                android:inputType="numberDecimal"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/add_product_ti_sale_amount"
+            app:layout_constraintTop_toBottomOf="@+id/add_product_ti_purchase_amount"
+
+            >
+
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_product_ed_sale_amount"
+                android:hint="@string/saleAmount"
+                android:maxLength="10"
+                android:inputType="numberDecimal"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/add_product_ti_product_code"
+            app:layout_constraintTop_toBottomOf="@+id/add_product_ti_sale_amount"
+
+            >
+
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_product_ed_product_code"
+                android:hint="@string/product_code"
+                android:maxLength="25"
+                android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/add_product_ti_description"
+            app:layout_constraintTop_toBottomOf="@+id/add_product_ti_product_code"
+
+            >
+
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_product_ed_description"
+                android:hint="@string/description"
+                android:maxLength="25"
+                android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/add_product_ti_location"
+            app:layout_constraintTop_toBottomOf="@+id/add_product_ti_description"
+
+            >
+
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_product_ed_location"
+                android:hint="@string/location"
+                android:maxLength="25"
+                android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
+    <!--Product info ends-->
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/add_product_ll_buttons"
+            app:layout_constraintTop_toBottomOf="@+id/add_product_ti_location">
+
+        <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:text="@string/Add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_add"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"/>
+
+        <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:text="@string/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_close"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

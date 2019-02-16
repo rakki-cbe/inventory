@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.home_activity.*
 import rakki.inventory.basic.R
-import rakki.inventory.basic.inventory.add.AddProductFragment
+import rakki.inventory.basic.inventory.add.AddInventoryFragment
 
 
 class HomeActivity : AppCompatActivity() {
@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setAddProductFragment() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.home_container, AddProductFragment.newInstance())
+            .replace(R.id.home_container, AddInventoryFragment.newInstance())
             .commitNow()
     }
 
